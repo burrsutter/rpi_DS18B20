@@ -1,12 +1,9 @@
 var ds18b20 = require('ds18b20');
 
-ds18b20.sensors(function(err, ids) {
-  // got sensor IDs ...
-  for (i = 0; i < ids.length; i++) {
-    console.log(ids[i]);
-  } 
-});
+// Save the sensor ids
+var sensorIDs = ds18b20.readSensorsIDs();
 
-ds18b20.temperature('28-0414505a09ff', function(err, value) {
+console.log("Getting temperature of: "+sensorIDs[0]);
+ds18b20.temperature(sensorIDs[0], function(err, value) {
   console.log('Current temperature is', value);
 });
