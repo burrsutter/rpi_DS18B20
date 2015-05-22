@@ -26,7 +26,14 @@ task readTemp(type: JavaExec, dependsOn: classes) {
 }
 task readTempLoop(type: JavaExec, dependsOn: classes) {
     main = 'org.jboss.summit2015.ds18b20.ReadTemperature'
-    args = ['1000']
+    args = ['100']
+    jvmArgs = ['-XX:+HeapDumpOnOutOfMemoryError']
+    classpath sourceSets.main.runtimeClasspath
+    classpath configurations.runtime
+}
+task readTempLoopMQTT(type: JavaExec, dependsOn: classes) {
+    main = 'org.jboss.summit2015.ds18b20.ReadTemperatureMQTT'
+    args = ['100']
     jvmArgs = ['-XX:+HeapDumpOnOutOfMemoryError']
     classpath sourceSets.main.runtimeClasspath
     classpath configurations.runtime

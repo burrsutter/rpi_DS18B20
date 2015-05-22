@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- *
+ * Read the temperature from the ds18b20 1-wire sensor, printing the temp in C and F
  */
 public class ReadTemperature {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         int count = 1;
         if(args.length > 0)
             count = Integer.parseInt(args[0]);
@@ -20,6 +20,7 @@ public class ReadTemperature {
             double temp = tempSensor.getTemperature();
             double tempF = temp * 1.8 + 32;
             System.out.printf("#%d: %.2fC or %.2fF\n", n, temp, tempF);
+            Thread.sleep(1000);
         }
     }
 }
