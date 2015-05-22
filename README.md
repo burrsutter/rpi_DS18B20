@@ -21,4 +21,7 @@ python ds18b20_read.py
 npm install ds18b20
 node ds18b20_read.js
 
-
+# Java usage
+gradle readTemp
+gradle readTempLoop
+gradle readTempLoopMQTT
